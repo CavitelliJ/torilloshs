@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Calculo tornillo</title>
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css" integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous">
+
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            color: #646464;
+            font-weight: 500
+
+        }
+
+        .conteiner {
+            width: 100%;
+            height: auto;
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            align-items: center;
+
+
+        }
+
+        #filter {
+            width: 70%;
+            max-width: 400px;
+            height: 35px;
+            margin: 50px 0 20px 0;
+            border: solid 2px grey;
+            border-radius: 4px;
+            font-family: sans-serif;
+            font-size: 13px;
+            text-transform: uppercase;
+            padding-left: 20px;
+
+
+
+
+        }
+        
+        ::placeholder{
+            font-family: 'Montserrat', sans-serif;
+            font-size: 15px;
+            color: #646464;
+            font-weight: 500
+        }
+
+        input:focus {
+            outline-width: 0;
+            outline: none;
+        }
+
+
+        .cards {
+            width: 80%;
+
+            height: auto;
+            /*        cambiar el heigt*/
+            /*        background: blue;*/
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+
+        li {
+            list-style: none;
+        }
+
+        .card {
+            width: 150px;
+            height: 170px;
+            margin: 30px;
+            font-size: 15px;
+            text-align: center;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            border-radius: 5px;
+            border: solid 2px grey;
+            justify-content: space-evenly;
+            align-items: center;
+transition: all 0.2s;
+        }
+
+.card:hover{
+box-shadow:5px 5px 13px 2px #bbb;
+transform:scale(1.04);
+
+}
+.card:hover > img{
+padding:0px;
+
+}
+	
+
+        .card img {
+            width: 120px;
+            height: 120px;
+            object-fit: contain;
+            object-position: center;
+            padding: 10px;
+transition: all 0.3s;
+
+
+        }
+
+        .card p {
+            display: flex;
+            justify-content: center;
+            height: 40px;
+            align-items: center;
+            padding: 10px;
+            
+
+        }
+
+        .none {
+            display: none;
+
+        }
+
+
+
+        .swal-button {
+            padding: 7px 35px;
+            border-radius: 4px;
+            background-color: grey;
+            font-size: 14px;
+
+        }
+
+    </style>
+
+</head>
+
+
+
+
+<body>
+
+    <div class="conteiner">
+
+       
+        <input id="filter" type="search" placeholder="Buscar">
+
+        <ul class="cards">
+
+            <li id="t1Mecha" class="card">
+                <img src="https://http2.mlstatic.com/D_NQ_NP_850122-MLA45794892879_052021-O.webp" alt="">
+                <p>T1 Mecha 8x9/16</p>
+
+            </li>
+
+ <li class="card">
+<img src="https://http2.mlstatic.com/D_NQ_NP_642549-MLA41529955558_042020-O.webp" alt="">
+                <p>t1 aguja</p>
+            </li>
+
+ <li class="card">
+<img src="https://http2.mlstatic.com/D_NQ_NP_948375-MLA41530243837_042020-O.webp" alt="">
+                <p>hex 10x3/4</p>
+            </li>
+
+            <li id="t2Aguja" class="card">
+                <img src="https://http2.mlstatic.com/D_NQ_NP_2X_884595-MLA42075659698_062020-F.webp" alt="">
+                <p>T2 Aguja 6x2</p>
+            </li>
+
+  <li class="card">
+<img src="https://http2.mlstatic.com/D_NQ_NP_2X_884595-MLA42075659698_062020-F.webp" alt="">
+                <p>t3 aguja</p>
+            </li>
+
+ <li onclick = "calcular("as", "15")" class="card">
+<img src="https://http2.mlstatic.com/D_NQ_NP_803052-MLA44160115650_112020-O.webp" alt="">
+                <p>t3 mecha</p>
+            </li>
+
+           
+            <li class="card">
+<img src="https://http2.mlstatic.com/D_NQ_NP_875521-MLA42073886413_062020-O.webp" alt="">
+                <p>fix 8x2</p>
+            </li>
+           
+            <li class="card">
+<img src="https://http2.mlstatic.com/D_NQ_NP_875521-MLA42073886413_062020-O.webp" alt="">
+                <p>fix 6x2</p>
+            </li>
+           
+            <li class="card">
+<img src="https://http2.mlstatic.com/D_NQ_NP_801403-MLA31613568714_072019-O.webp" alt="">
+                <p>hex t2 14x2</p>
+            </li>
+          
+
+        </ul>
+
+
+
+    </div>
+
+
+
+    <script>
+        var filter = document.getElementById("filter")
+        var cards = document.querySelectorAll(".card")
+        var p = document.querySelectorAll("p")
+
+
+        filter.focus()
+
+        filter.addEventListener("keyup", function(e) {
+
+
+            for (i = 0; i < cards.length; i++) {
+                if (p[i].innerHTML.toLowerCase().includes(filter.value)) {
+                    cards[i].classList.remove("none")
+                } else {
+                    cards[i].classList.add("none")
+                }
+            }
+
+        })
+
+
+
+        var t1Mecha = document.getElementById("t1Mecha")
+        var t2Aguja = document.getElementById("t2Aguja")
+
+        t1Mecha.addEventListener("click", function(text, gr) {
+
+            calcular(" Tornillos T1 Mecha 8x9/16 pesan: ", 2.8)
+
+        })
+
+        t2Aguja.addEventListener("click", function(text, gr) {
+
+
+            calcular(" Tornillos T2 Aguja 6x1 pesan: ", 0.8)
+
+        })
+
+        function calcular(text, gr) {
+
+
+
+swal({
+  content: {
+    element: "input",
+    attributes: {
+      placeholder: "Type your password",
+      type: "number",
+    },
+  },
+});
+
+
+
+
+        }
+
+    </script>
+</body>
+
+</html>
